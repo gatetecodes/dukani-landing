@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fredoka), ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #10262E;
+  --color-ink-soft: #2B4A54;
+  --color-muted: #5C6F76;
+  --color-brand: #0D4D5F;
+  --color-canvas: #EDF2F3;
+  --color-line: #D3DFE2;
+  --color-line-soft: #E1E9EB;
+  --color-fog: #D8E8EC;
+  --color-go: #3FA36B;
+
+  --color-pink: #F1CDEB;
+  --color-pink-deep: #E8B9E0;
+  --color-sky: #CFE7F2;
+  --color-sky-deep: #B8DCEC;
+  --color-mint: #D3F0D3;
+  --color-mint-deep: #BFE6BF;
+  --color-lilac: #D9D3F5;
+  --color-lilac-deep: #CBC3F0;
+
+  /* Legacy names still used by the privacy and delete-account pages, mapped onto the new palette. */
+  --color-primary: #0D4D5F;
+  --color-primary-50: #E7F3F8;
+  --color-primary-100: #CFE7F2;
+  --color-primary-500: #0D4D5F;
+  --color-primary-600: #10262E;
+  --color-primary-700: #10262E;
+  --color-primary-800: #10262E;
+
+  --color-secondary: #E1E9EB;
+  --color-secondary-100: #F6F9FA;
+  --color-secondary-200: #E1E9EB;
+  --color-secondary-300: #D3DFE2;
+
+  --color-neutral-400: #8A9CA2;
+  --color-neutral-500: #5C6F76;
+  --color-neutral-600: #2B4A54;
+  --color-neutral-700: #2B4A54;
+  --color-neutral-800: #10262E;
+  --color-neutral-900: #10262E;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.glass {
+  background: rgba(237, 242, 243, 0.86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
