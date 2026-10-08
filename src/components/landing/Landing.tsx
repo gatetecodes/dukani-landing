@@ -5,14 +5,16 @@ import { COPY, type Lang } from "./copy";
 import Icon from "./Icon";
 
 const PLAY_URL = "https://play.google.com/store/apps/details?id=rw.dukani.app";
-// Set once the iOS app is live; the App Store button stays hidden until then.
+// Set once the iOS app is live; until then the App Store badge shows as "coming soon".
 const APP_STORE_URL: string | null = null;
+// Closed-testing Google Group. While set, the Google Play button invites people to the beta
+// instead of the store listing; set to null once the app is live in production.
+const BETA_URL: string | null = "https://groups.google.com/g/dukani-alpha";
 
-// TODO: placeholder contact details carried over from the design.
 const CONTACT = {
-  phone: "+250 788 000 000",
-  whatsapp: "https://wa.me/250788000000",
-  email: "hello@dukani.rw",
+  phone: "+250 789 759 638",
+  whatsapp: "https://wa.me/250789759638",
+  email: "hello@getdukani.com",
 };
 
 const SHOW_TESTIMONIALS = true;
@@ -48,24 +50,32 @@ function Phone({ className, alt, ...img }: { className: string } & Omit<Componen
 function StoreButtons({ lang }: { lang: Lang }) {
   const t = COPY[lang];
   const stores = [
-    { href: PLAY_URL, icon: "ri:google-play-fill", small: t.gpSmall, label: "Google Play" } as const,
-    ...(APP_STORE_URL ? [{ href: APP_STORE_URL, icon: "ri:apple-fill", small: t.asSmall, label: "App Store" } as const] : []),
+    { href: BETA_URL ?? PLAY_URL, icon: "ri:google-play-fill", small: BETA_URL ? t.gpBeta : t.gpSmall, label: "Google Play" } as const,
+    { href: APP_STORE_URL, icon: "ri:apple-fill", small: APP_STORE_URL ? t.asSmall : t.asSoon, label: "App Store" } as const,
   ];
   return (
     <div className="flex flex-wrap gap-3">
-      {stores.map((s) => (
-        <a
-          key={s.label}
-          href={s.href}
-          className="flex h-[62px] items-center gap-3 rounded-full bg-ink pr-6 pl-[18px] text-white transition-colors hover:bg-brand"
-        >
-          <Icon icon={s.icon} size={26} />
-          <span className="flex flex-col leading-[1.1]">
-            <span className="text-[11px] font-medium opacity-85">{s.small}</span>
-            <span className="text-[19px] font-semibold">{s.label}</span>
+      {stores.map((s) => {
+        const content = (
+          <>
+            <Icon icon={s.icon} size={26} />
+            <span className="flex flex-col leading-[1.1]">
+              <span className="text-[10px] font-medium opacity-85">{s.small}</span>
+              <span className="text-[19px] font-semibold">{s.label}</span>
+            </span>
+          </>
+        );
+        const shape = "flex h-[62px] items-center gap-3 rounded-full pr-6 pl-[18px]";
+        return s.href ? (
+          <a key={s.label} href={s.href} className={`${shape} bg-ink text-white transition-colors hover:bg-brand`}>
+            {content}
+          </a>
+        ) : (
+          <span key={s.label} className={`${shape} cursor-default bg-ink/8 text-ink/45 select-none`}>
+            {content}
           </span>
-        </a>
-      ))}
+        );
+      })}
     </div>
   );
 }

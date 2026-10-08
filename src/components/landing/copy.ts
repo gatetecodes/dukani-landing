@@ -11,6 +11,8 @@ export type Copy = {
   heroSub: string;
   gpSmall: string;
   asSmall: string;
+  asSoon: string;
+  gpBeta: string;
   heroPoints: string[];
   chip1a: string;
   chip2a: string;
@@ -58,6 +60,8 @@ export const COPY: Record<Lang, Copy> = {
       "Track stock, record sales and keep a clear list of who owes you. Dukani runs on your phone, even without internet.",
     gpSmall: "GET IT ON",
     asSmall: "Download on the",
+    asSoon: "Coming soon to",
+    gpBeta: "JOIN THE BETA ON",
     heroPoints: ["Free to start", "Works offline", "English and Kinyarwanda"],
     chip1a: "Sale recorded",
     chip2a: "Low stock",
@@ -134,6 +138,8 @@ export const COPY: Record<Lang, Copy> = {
       "Kurikirana ibicuruzwa, andika ibyo wagurishije kandi umenye neza abakurimo amadeni. Dukani ikora kuri telefoni yawe, nubwo nta interineti ihari.",
     gpSmall: "IBONEKA KURI",
     asSmall: "Kuramo kuri",
+    asSoon: "Izaboneka vuba kuri",
+    gpBeta: "GERAGEZA BETA KURI",
     heroPoints: ["Gutangira ni ubuntu", "Ikora nta interineti", "Icyongereza n’Ikinyarwanda"],
     chip1a: "Igurisha ryanditswe",
     chip2a: "Bigiye gushira",
